@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import joblib
 import streamlit as st
 
@@ -44,4 +43,5 @@ if st.button("Prediksi Tahun 2023"):
 
 st.markdown("---")
 st.caption("Dikembangkan oleh Kelompok 8 - Business Finance Analytics")
+
 
