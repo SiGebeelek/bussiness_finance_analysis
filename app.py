@@ -1,3 +1,5 @@
+import streamlit as st
+
 st.set_page_config(page_title="Business Finance Analytics", layout="centered")
 
 st.title("📈 Business Finance Predictor")
