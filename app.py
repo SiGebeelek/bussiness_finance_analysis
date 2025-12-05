@@ -28,8 +28,15 @@ val_2022 = st.sidebar.number_input("Nilai Tahun 2022", value=0.0)
 
 if st.button("Prediksi Tahun 2023"):
     if model is not None:
-        input_data = pd.DataFrame([[val_2020, val_2021, val_2022]], columns=['2020', '2021', '2022'])
-        prediction = model.predict(input_data)[0]
+        val_2020_scaled = val_2020 / 1000
+        val_2021_scaled = val_2021 / 1000
+        val_2022_scaled = val_2022 / 1000
+    
+        input_data = pd.DataFrame([[val_2020_scaled, val_2021_scaled, val_2022_scaled]], columns=['2020', '2021', '2022'])
+        prediction_scaled = model.predict(input_data)[0]
+        
+        prediction = prediction_scaled * 1000
+        
         st.success(f"Prediksi Nilai Tahun 2023:")
         st.metric(label="Projected Value", value=f"Rp {prediction:,.2f}")
         chart_data = pd.DataFrame({
@@ -43,5 +50,3 @@ if st.button("Prediksi Tahun 2023"):
 
 st.markdown("---")
 st.caption("Dikembangkan oleh Kelompok 8 - Business Finance Analytics")
-
-
